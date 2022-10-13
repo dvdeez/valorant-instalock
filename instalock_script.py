@@ -3,95 +3,100 @@ import ctypes
 import pyautogui as gui
 import time
 
-# user32 = ctypes.windll.user32
-# user32.SetProcessDPIAware()
-# screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+def monitor_info():
+    user32 = ctypes.windll.user32
+    user32.SetProcessDPIAware()
+    width, height = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+
+    return width, height
 
 
-def desired_agent(agent):
+def desired_agent(width, height, agent):
     match agent:
         case "astra":
-            x_loc = 580
-            y_loc = 920
+            x_loc = width * 0.302083 # left-most agent in selection screen
+            y_loc = height * 0.85185 # height of first row of agents
         case "breach":
-            x_loc = 665
-            y_loc = 920
+            x_loc = (width * 0.302083) + (width * 0.04427) # one agent across from left-most
+            y_loc = height * 0.85185
         case "brimstone":
-            x_loc = 750
-            y_loc = 920
+            x_loc = (width * 0.302083) + 2(width * 0.04427) # two agents across from left-most
+            y_loc = height * 0.85185
         case "chamber":
-            x_loc = 835
-            y_loc = 920
+            x_loc = (width * 0.302083) + 3(width * 0.04427) # three agents across from left-most
+            y_loc = height * 0.85185
         case "cypher":
-            x_loc = 920
-            y_loc = 920
+            x_loc = (width * 0.302083) + 4(width * 0.04427) # four agents across from left-most
+            y_loc = height * 0.85185
         case "fade":
-            x_loc = 1005
-            y_loc = 920
+            x_loc = (width * 0.302083) + 5(width * 0.04427) # five agents across from left-most
+            y_loc = height * 0.85185
         case "harbor":
+            print("NOT IN THE GAME YET")
             x_loc = 0
             y_loc = 0
         case "jett":
-            x_loc = 1090
-            y_loc = 920
+            x_loc = (width * 0.302083) + 6(width * 0.04427) # six agents across from left-most
+            y_loc = height * 0.85185
         case "kayo":
-            x_loc = 1175
-            y_loc = 920
+            x_loc = (width * 0.302083) + 7(width * 0.04427) # seven agents across from left-most
+            y_loc = height * 0.85185
         case "killjoy":
-            x_loc = 1260
-            y_loc = 920
+            x_loc = (width * 0.302083) + 8(width * 0.04427) # eight agents across from left-most
+            y_loc = height * 0.85185
         case "neon":
-            x_loc = 1345
-            y_loc = 920
+            x_loc = (width * 0.302083) + 9(width * 0.04427) # nine agents across from left-most
+            y_loc = height * 0.85185
         case "omen":
-            x_loc = 580
-            y_loc = 1000
+            x_loc = width * 0.302083 # left-most agent in selection screen
+            y_loc = height * 0.92593 # height of second row of agents
         case "phoenix":
-            x_loc = 665
-            y_loc = 1000
+            x_loc = (width * 0.302083) + (width * 0.04427) # one agent across from left-most
+            y_loc = height * 0.92593
         case "raze":
-            x_loc = 750
-            y_loc = 1000
+            x_loc = (width * 0.302083) + 2(width * 0.04427) # two agents across from left-most
+            y_loc = height * 0.92593
         case "reyna":
-            x_loc = 835
-            y_loc = 1000
+            x_loc = (width * 0.302083) + 3(width * 0.04427) # three agents across from left-most
+            y_loc = height * 0.92593
         case "sage":
-            x_loc = 920
-            y_loc = 1000
+            x_loc = (width * 0.302083) + 4(width * 0.04427) # four agents across from left-most
+            y_loc = height * 0.92593
         case "skye":
-            x_loc = 1005
-            y_loc = 1000
+            x_loc = (width * 0.302083) + 5(width * 0.04427) # five agents across from left-most
+            y_loc = height * 0.92593
         case "sova":
-            x_loc = 1090
-            y_loc = 1000
+            x_loc = (width * 0.302083) + 6(width * 0.04427) # six agents across from left-most
+            y_loc = height * 0.92593
         case "viper":
-            x_loc = 1175
-            y_loc = 1000
+            x_loc = (width * 0.302083) + 7(width * 0.04427) # seven agents across from left-most
+            y_loc = height * 0.92593
         case "yoru":
-            x_loc = 1260
-            y_loc = 1000
+            x_loc = (width * 0.302083) + 8(width * 0.04427) # eight agents across from left-most
+            y_loc = height * 0.92593
         case _:
             x_loc = "lig"
             y_loc = "ma"
 
     return x_loc, y_loc
 
-def clicking(x_loc, y_loc):
+def clicking(width, height, x_loc, y_loc):
     end_time = time.time() + 10
     while time.time() < end_time:
         gui.click(x_loc, y_loc)
-        gui.click(960, 810) # "lock in" button
+        gui.click(width * 0.5, height * 0.75) # "lock in" button
 
 def main():
+    # retrieve monitor resolution
+    width, height = monitor_info()
+    # desired agent to play
     agent = sys.argv[1].lower()
-    start_time = time.time()
-    
     # retrieve agent coordinates
-    x_loc, y_loc = desired_agent(agent)
+    x_loc, y_loc = desired_agent(width, height, agent)
     # give time to tab back into game
     print("YOU HAVE 5 SECONDS TO OPEN VALORANT")
     time.sleep(5)
     # begin instalock sequence
-    clicking(x_loc, y_loc)
+    clicking(width, height, x_loc, y_loc)
 
 main()
