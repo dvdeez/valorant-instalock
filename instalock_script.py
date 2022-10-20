@@ -32,47 +32,46 @@ def desired_agent(width, height, agent):
             x_loc = (width * 0.302083) + 5(width * 0.04427) # five agents across from left-most
             y_loc = height * 0.85185
         case "harbor":
-            print("NOT IN THE GAME YET")
-            x_loc = 0
-            y_loc = 0
-        case "jett":
             x_loc = (width * 0.302083) + 6(width * 0.04427) # six agents across from left-most
+            y_loc = height * 0.92593
+        case "jett":
+            x_loc = (width * 0.302083) + 7(width * 0.04427) # seven agents across from left-most
             y_loc = height * 0.85185
         case "kayo":
-            x_loc = (width * 0.302083) + 7(width * 0.04427) # seven agents across from left-most
+            x_loc = (width * 0.302083) + 8(width * 0.04427) # eight agents across from left-most
             y_loc = height * 0.85185
         case "killjoy":
-            x_loc = (width * 0.302083) + 8(width * 0.04427) # eight agents across from left-most
-            y_loc = height * 0.85185
-        case "neon":
             x_loc = (width * 0.302083) + 9(width * 0.04427) # nine agents across from left-most
             y_loc = height * 0.85185
-        case "omen":
+        case "neon":
             x_loc = width * 0.302083 # left-most agent in selection screen
             y_loc = height * 0.92593 # height of second row of agents
+        case "omen":
+            x_loc = width * 0.302083 + (width * 0.04427) # one agent across from left-most
+            y_loc = height * 0.92593 
         case "phoenix":
-            x_loc = (width * 0.302083) + (width * 0.04427) # one agent across from left-most
+            x_loc = (width * 0.302083) + 2(width * 0.04427) # two agent across from left-most
             y_loc = height * 0.92593
         case "raze":
-            x_loc = (width * 0.302083) + 2(width * 0.04427) # two agents across from left-most
-            y_loc = height * 0.92593
-        case "reyna":
             x_loc = (width * 0.302083) + 3(width * 0.04427) # three agents across from left-most
             y_loc = height * 0.92593
-        case "sage":
+        case "reyna":
             x_loc = (width * 0.302083) + 4(width * 0.04427) # four agents across from left-most
             y_loc = height * 0.92593
-        case "skye":
+        case "sage":
             x_loc = (width * 0.302083) + 5(width * 0.04427) # five agents across from left-most
             y_loc = height * 0.92593
-        case "sova":
+        case "skye":
             x_loc = (width * 0.302083) + 6(width * 0.04427) # six agents across from left-most
             y_loc = height * 0.92593
-        case "viper":
+        case "sova":
             x_loc = (width * 0.302083) + 7(width * 0.04427) # seven agents across from left-most
             y_loc = height * 0.92593
-        case "yoru":
+        case "viper":
             x_loc = (width * 0.302083) + 8(width * 0.04427) # eight agents across from left-most
+            y_loc = height * 0.92593
+        case "yoru":
+            x_loc = (width * 0.302083) + 9(width * 0.04427) # nine agents across from left-most
             y_loc = height * 0.92593
         case _:
             x_loc = "lig"
